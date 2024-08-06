@@ -5,7 +5,7 @@ from sqlalchemy import Column, Integer, String, DateTime, ForeignKey, JSON, Floa
 from sqlalchemy.sql import func
 
 engine = create_engine(
-    "sqlite:///mydb.db", connect_args={"check_same_thread": False}
+    "sqlite:///hhvndb.db", connect_args={"check_same_thread": False}
 )
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 
@@ -49,20 +49,34 @@ class Feature(Base):
     time_signature = Column(Integer)
     valence = Column(Float)
 
+
 if __name__ == "__main__":
     Base.metadata.create_all(bind=engine)
     db = SessionLocal()
 
-    df_artists = 'data/df_artists.csv'
+    df_artists = 'data/hhvn/df_artists_hhvn.csv'
     df_artists = pd.read_csv(df_artists)
-    
-    for index, row in df_artists.iterrows():
-        artist = Artist(id = row['id'], name = row['name'], genres = row['genres'],
-                        popularity = row['popularity'], followers = row['followers'], image_url = row['image_url'], url = row['url'])
-        db.add(artist)
-    db.commit()
 
-    df_audio_features = 'data/df_audio_features.csv'
+    for index, row in df_artists.iterrows():
+        artist = Artist(
+            id=row['artist_id'], 
+            name=row['name'], 
+            genres=row['genres'],
+            popularity=row['popularity'], 
+            followers=row['followers'], 
+            image_url=row['image_url'], 
+            url=row['url']
+        )
+        try:
+            db.add(artist)
+            db.commit()
+        except Exception as e:
+            db.rollback() 
+            print(f"Error adding artist {row['name']}: {e}")
+
+    db.close()
+
+    df_audio_features = 'data/hhvn/df_audio_features_hhvn.csv'
     df_audio_features = pd.read_csv(df_audio_features)
 
     for index, row in df_audio_features.iterrows():
@@ -73,7 +87,7 @@ if __name__ == "__main__":
         db.add(audio_features)
     db.commit()
 
-    df_tracks = 'data/df_tracks.csv'
+    df_tracks = 'data/hhvn/df_tracks_hhvn.csv'
     df_tracks = pd.read_csv(df_tracks)
     
     for index, row in df_tracks.iterrows():
@@ -81,7 +95,4 @@ if __name__ == "__main__":
         db.add(tracks)
     db.commit()
     
-    #done added
-    
-
-    
+    # done added
