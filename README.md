@@ -22,27 +22,38 @@ This project automates the process of finding the most popular artists by::
 
 ## ETL Pipeline Structure of Data Processing
 ![alt text](image.png)
-
+![alt text](image-1.png)
 
 ## Usage: 
 The collect of Data will be analyze featured artists in playlists: Identify featured artists in playlists, based on song count, popularity, and musical characteristics.
 
 ## Purpose:
 1. Understanding User interests: 
+
 Purpose: Identifying popular musicians in playlists may provide insights into consumers' musical interests and trends.
+
 Application: This information may be used to tailor the user experience by recommending new music or artists that they would like.
 
 2. Marketing and collaborations: 
+
 Purpose: Popular artists and songs might be targeted for marketing campaigns or commercial collaborations.
+
 This information may be used by music firms, labels, and streaming platforms to develop promotional campaigns, plan events, and collaborate with artists on special initiatives.
 
 3. Catalog Management: 
+
 Purpose: Identify top artists to optimize content management and dissemination.
+
 Applications: Catalog managers may utilize promotions to highlight songs or albums by featured artists, as well as build unique playlists to entice users.
 
 4. Market Analysis and Music Trends: 
+
 Purpose: Identify new artists in playlists to anticipate future music trends.
+
 Applications: Market analysts may use this data to predict the market or to help them make investment choices on new performers or music genres.
 
-5. Artist success Measurement: This study helps labels and artists measure the success of songs and albums in playlists.
+5. Artist success Measurement: 
+
+Purpose: This study helps labels and artists measure the success of songs and albums in playlists.
+
 Applications: The data may assist artists and managers better understand their popularity, allowing them to alter their music release and marketing methods.
